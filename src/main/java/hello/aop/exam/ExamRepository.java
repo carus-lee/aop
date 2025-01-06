@@ -1,5 +1,6 @@
 package hello.aop.exam;
 
+import hello.aop.exam.annotation.Retry;
 import hello.aop.exam.annotation.Trace;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,7 @@ public class ExamRepository {
      * 5번에 1번씩 에러 발생시킴
      */
     @Trace
+    @Retry(value = 4) //retry 최대 횟수 지정
     public String save(String itemId) {
 
         seq++;
